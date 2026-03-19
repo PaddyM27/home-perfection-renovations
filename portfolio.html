@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — A&B Home Perfection Renovations</title>
+  <meta name="description" content="Browse our portfolio of completed attic conversions, kitchen renovations, and extensions across Dublin. Fixed-price, turn-key results." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="images/web/attic-bathroom-marble.webp" type="image/webp" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-charcoal:    #2C2C2C;
+      --color-oak:         #A07850;
+      --color-oak-light:   #C4A265;
+      --color-oak-dark:    #7A5C38;
+      --color-offwhite:    #F7F4F0;
+      --color-offwhite-2:  #EDE9E3;
+      --color-offwhite-3:  #E0DAD1;
+      --color-text-muted:  #6B6460;
+      --shadow-card:  0 4px 16px -4px rgba(44,44,44,0.10), 0 1px 4px -1px rgba(160,120,80,0.06);
+      --shadow-float: 0 16px 48px -8px rgba(44,44,44,0.18), 0 4px 16px -4px rgba(160,120,80,0.08);
+      --shadow-nav:   0 2px 12px -2px rgba(44,44,44,0.08);
+      --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--color-offwhite); color: var(--color-charcoal); font-family: 'DM Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    .grain-overlay { position: fixed; inset: 0; z-index: 9999; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.028; }
+
+    /* Nav */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 14px 48px; background: rgba(247,244,240,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: var(--shadow-nav); display: flex; align-items: center; justify-content: space-between; }
+    .nav-wordmark { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; color: var(--color-charcoal); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--color-text-muted); text-decoration: none; letter-spacing: 0.04em; position: relative; padding-bottom: 2px; transition: color 250ms; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--color-oak); transform: scaleX(0); transform-origin: left; transition: transform 250ms var(--ease-smooth); }
+    .nav-links a:hover { color: var(--color-oak); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a[aria-current="page"] { color: var(--color-oak); }
+    .nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+    .nav-cta { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; background: var(--color-oak); color: var(--color-offwhite); padding: 10px 22px; border-radius: 2px; text-decoration: none; letter-spacing: 0.04em; transition: transform 200ms var(--ease-spring), box-shadow 200ms, background 200ms; box-shadow: 0 2px 8px rgba(160,120,80,0.25); }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(160,120,80,0.30); background: var(--color-oak-light); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--color-charcoal); transition: transform 300ms var(--ease-smooth), opacity 200ms; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { position: fixed; inset: 0; z-index: 999; background: var(--color-charcoal); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 300ms var(--ease-smooth); }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 500; color: var(--color-offwhite); text-decoration: none; letter-spacing: -0.02em; padding: 8px 0; transition: color 200ms; }
+    .mobile-menu a:hover { color: var(--color-oak-light); }
+    .mobile-menu .mobile-cta { margin-top: 32px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; background: var(--color-oak); color: var(--color-offwhite); padding: 12px 28px; border-radius: 2px; text-decoration: none; }
+    @media (max-width: 768px) { .nav { padding: 12px 24px; } .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
+
+    .eyebrow { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-oak); }
+
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; background: var(--color-oak); color: var(--color-offwhite); padding: 14px 28px; border-radius: 2px; text-decoration: none; border: none; cursor: pointer; transition: transform 200ms var(--ease-spring), box-shadow 200ms, background 200ms; box-shadow: 0 4px 14px rgba(160,120,80,0.30); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(160,120,80,0.35); background: var(--color-oak-light); }
+    .btn-primary:active { transform: translateY(1px); }
+    .btn-primary:focus-visible { outline: 2px solid var(--color-oak); outline-offset: 3px; }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    @media (max-width: 768px) { .section-inner { padding: 0 24px; } }
+
+    /* Page Hero */
+    .page-hero { background: var(--color-charcoal); padding: 140px 0 80px; min-height: 40vh; display: flex; align-items: flex-end; }
+
+    /* Filter bar */
+    .filter-bar { position: sticky; top: 60px; z-index: 100; background: var(--color-offwhite); border-bottom: 1px solid var(--color-offwhite-3); padding: 0 48px; }
+    .filter-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 0; }
+    .filter-tab { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--color-text-muted); padding: 16px 24px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; transition: color 200ms, border-color 200ms; }
+    .filter-tab:hover { color: var(--color-charcoal); }
+    .filter-tab.active { color: var(--color-oak); border-bottom-color: var(--color-oak); }
+    @media (max-width: 768px) { .filter-bar { padding: 0 24px; overflow-x: auto; } .filter-inner { width: max-content; } }
+
+    /* Masonry grid */
+    .masonry { padding: 48px 48px 80px; max-width: 1200px; margin: 0 auto; columns: 3; column-gap: 16px; }
+    .masonry-item { break-inside: avoid; margin-bottom: 16px; position: relative; overflow: hidden; border-radius: 2px; cursor: pointer; transition: opacity 300ms, transform 300ms var(--ease-smooth); }
+    .masonry-item.hidden { opacity: 0; height: 0; overflow: hidden; pointer-events: none; margin-bottom: 0; }
+    .masonry-item img { display: block; width: 100%; transition: transform 500ms var(--ease-smooth); }
+    .masonry-item:hover img { transform: scale(1.04); }
+    .masonry-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(44,44,44,0.72) 0%, transparent 55%); opacity: 0; transition: opacity 300ms; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px 22px; }
+    .masonry-item:hover .masonry-overlay { opacity: 1; }
+    .masonry-project { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--color-offwhite); }
+    .masonry-cat { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-oak-light); margin-bottom: 4px; }
+    @media (max-width: 900px) { .masonry { columns: 2; padding-left: 24px; padding-right: 24px; } }
+    @media (max-width: 500px) { .masonry { columns: 1; } }
+
+    /* Before / After */
+    .before-after-section { background: var(--color-charcoal); padding: 96px 0; }
+    .ba-card { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0; border-radius: 2px; overflow: hidden; margin-bottom: 48px; }
+    .ba-card:last-child { margin-bottom: 0; }
+    .ba-side { position: relative; }
+    .ba-side img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+    .ba-label { position: absolute; top: 16px; left: 20px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(44,44,44,0.75); color: var(--color-offwhite); padding: 5px 10px; border-radius: 1px; }
+    .ba-divider { width: 1px; background: var(--color-oak); }
+    @media (max-width: 640px) { .ba-card { grid-template-columns: 1fr; } .ba-divider { width: 100%; height: 2px; } }
+
+    /* CTA strip */
+    .cta-strip { padding: 96px 0; background: var(--color-offwhite); text-align: center; }
+
+    /* Footer */
+    footer { background: var(--color-charcoal); color: var(--color-offwhite); padding: 64px 0 32px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+    .footer-brand .wordmark { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--color-offwhite); letter-spacing: -0.02em; }
+    .footer-brand .tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(247,244,240,0.55); margin-top: 10px; line-height: 1.5; }
+    .footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,244,240,0.45); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-family: 'DM Sans', sans-serif; font-size: 14px; color: rgba(247,244,240,0.7); text-decoration: none; transition: color 200ms; }
+    .footer-col a:hover { color: var(--color-oak-light); }
+    .footer-bottom { max-width: 1200px; margin: 48px auto 0; padding: 24px 48px 0; border-top: 1px solid rgba(247,244,240,0.1); display: flex; align-items: center; justify-content: space-between; }
+    .footer-bottom p { font-family: 'DM Sans', sans-serif; font-size: 12px; color: rgba(247,244,240,0.35); }
+    .footer-badge { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--color-oak-light); border: 1px solid rgba(160,120,80,0.35); padding: 5px 12px; border-radius: 20px; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 36px; } .footer-grid, .footer-bottom { padding-left: 24px; padding-right: 24px; } }
+
+    @media (prefers-reduced-motion: reduce) { .masonry-item, .masonry-item img, .masonry-overlay { transition: none; } }
+  </style>
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="index.html#lead-form" class="mobile-cta" onclick="closeMobileMenu()">Get a Free Estimate</a>
+  </nav>
+</div>
+
+<header class="nav" id="mainNav">
+  <a href="index.html" class="nav-wordmark" aria-label="A&B Home Perfection Renovations"><img src="images/web/logo-transparent.png" alt="A&B Home Perfection Renovations" style="height:36px;width:auto;" /></a>
+  <ul class="nav-links" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="index.html#lead-form" class="nav-cta">Book a Consultation</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="section-inner">
+    <span class="eyebrow" style="color:rgba(160,120,80,0.8);">Our Work</span>
+    <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(56px,8vw,96px); font-weight:500; color:var(--color-offwhite); letter-spacing:-0.04em; line-height:0.95; margin-top:12px;">
+      Transformations.
+    </h1>
+    <p style="font-family:'DM Sans',sans-serif; font-size:16px; color:rgba(247,244,240,0.55); margin-top:20px; max-width:520px; line-height:1.7;">
+      Every project below was designed, built, and finished by our team — from structural works to the final coat of paint.
+    </p>
+  </div>
+</section>
+
+<!-- Filter Bar -->
+<nav class="filter-bar" aria-label="Portfolio filter">
+  <div class="filter-inner">
+    <button class="filter-tab active" data-filter="all">All Projects</button>
+    <button class="filter-tab" data-filter="attic">Attic Conversions</button>
+    <button class="filter-tab" data-filter="kitchen">Kitchen Renovations</button>
+    <button class="filter-tab" data-filter="extension">Extensions</button>
+  </div>
+</nav>
+
+<!-- Masonry Portfolio Grid -->
+<main>
+  <div class="masonry" id="masonryGrid" aria-label="Portfolio projects">
+
+    <div class="masonry-item" data-category="attic">
+      <img src="images/web/attic-bathroom-marble.webp" alt="Attic conversion — Adamstown, Dublin. Luxury en-suite with marble tiles and LED lighting." fetchpriority="high" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Attic Conversion</div>
+        <div class="masonry-project">Ranelagh, Dublin 6</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="kitchen">
+      <img src="images/web/kitchen-clondalkin-1.webp" alt="Kitchen renovation — Clondalkin, Dublin. Sage green shaker cabinetry with island." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Kitchen Renovation</div>
+        <div class="masonry-project">Clontarf, Dublin 3</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="extension">
+      <img src="images/web/extension-dun-laoghaire-1.webp" alt="Home extension — Dún Laoghaire, Dublin. Rear extension with sliding glass doors." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Extension</div>
+        <div class="masonry-project">Terenure, Dublin 6W</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="attic">
+      <img src="images/web/attic-bedroom-clean.webp" alt="Attic conversion — Adamstown, Dublin. Clean bedroom with natural light and timber flooring." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Attic Conversion</div>
+        <div class="masonry-project">Adamstown, Dublin</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="kitchen">
+      <img src="images/web/kitchen-tallaght-2.webp" alt="Kitchen renovation — Tallaght, Dublin. Modern grey handleless kitchen with marble splashback." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Kitchen Renovation</div>
+        <div class="masonry-project">Rathmines, Dublin 6</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="extension">
+      <img src="images/web/extension-dun-laoghaire-2.webp" alt="Home extension — Dún Laoghaire, Dublin. Extension with garden access." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Extension</div>
+        <div class="masonry-project">Sandymount, Dublin 4</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="attic">
+      <img src="images/web/attic-storage-shelving.webp" alt="Attic conversion — Adamstown, Dublin. Custom built-in shelving and storage." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Attic Conversion</div>
+        <div class="masonry-project">Adamstown, Dublin</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="kitchen">
+      <img src="images/web/kitchen-shankill-1.webp" alt="Kitchen renovation — Shankill, Dublin. Light grey modern kitchen." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Kitchen Renovation</div>
+        <div class="masonry-project">Stillorgan, Co. Dublin</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="extension">
+      <img src="images/web/attic-citywest-storage.webp" alt="Attic conversion — Citywest, Dublin. Fitted white storage with timber accent wall." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Extension</div>
+        <div class="masonry-project">Drumcondra, Dublin 9</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="attic">
+      <img src="images/web/attic-adamstown2-1.webp" alt="Attic conversion — Adamstown, Dublin." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Attic Conversion</div>
+        <div class="masonry-project">Swords, Co. Dublin</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="kitchen">
+      <img src="images/web/kitchen-clondalkin-2.webp" alt="Kitchen renovation — Clondalkin, Dublin." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Kitchen Renovation</div>
+        <div class="masonry-project">Malahide, Co. Dublin</div>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-category="extension">
+      <img src="images/web/kitchen-tallaght-1.webp" alt="Kitchen renovation — Tallaght, Dublin. Grey handleless units with Bosch appliances." loading="lazy" decoding="async" />
+      <div class="masonry-overlay">
+        <div class="masonry-cat">Extension</div>
+        <div class="masonry-project">Harold's Cross, D6W</div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Before / After Section -->
+<section class="before-after-section">
+  <div class="section-inner">
+    <span class="eyebrow" style="color:var(--color-oak);">Before &amp; After</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,52px); font-weight:500; color:var(--color-offwhite); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; margin-bottom:48px;">
+      The transformation in full.
+    </h2>
+
+    <div class="ba-card">
+      <div class="ba-side">
+        <img src="images/web/before-attic-wicklow.webp" alt="Attic before conversion — Wicklow. Raw attic with exposed beams and rubble." />
+        <span class="ba-label">Before</span>
+      </div>
+      <div class="ba-divider"></div>
+      <div class="ba-side">
+        <img src="images/web/after-attic-wicklow.webp" alt="Attic after conversion — Wicklow. Finished attic room with warm tones, timber floor and skylights." />
+        <span class="ba-label">After</span>
+      </div>
+    </div>
+
+    <div class="ba-card">
+      <div class="ba-side">
+        <img src="images/web/before-kitchen-tallaght.webp" alt="Kitchen before renovation — Tallaght. Old dated kitchen before renovation." />
+        <span class="ba-label">Before</span>
+      </div>
+      <div class="ba-divider"></div>
+      <div class="ba-side">
+        <img src="images/web/after-kitchen-tallaght.webp" alt="Kitchen after renovation — Tallaght. Beautiful grey modern kitchen." />
+        <span class="ba-label">After</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Strip -->
+<section class="cta-strip">
+  <div class="section-inner">
+    <span class="eyebrow">Start Your Project</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,52px); font-weight:500; color:var(--color-charcoal); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; margin-bottom:16px;">
+      Ready to see what's possible?
+    </h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:16px; color:var(--color-text-muted); max-width:480px; margin:0 auto 32px; line-height:1.7;">
+      Tell us about your space and we'll put together a free, no-obligation estimate.
+    </p>
+    <a href="index.html#lead-form" class="btn-primary">Get a Free Estimate</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="wordmark"><img src="images/web/logo-transparent.png" alt="A&B Home Perfection Renovations" style="height:48px;width:auto;margin-bottom:8px;" /></div>
+      <div class="tagline">"From First Sketch to Final Lick of Paint."</div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html#attic">Attic Conversions</a></li>
+        <li><a href="services.html#kitchen">Kitchen Renovations</a></li>
+        <li><a href="services.html#extension">Extensions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/353873930239">WhatsApp Us</a></li>
+        <li><a href="mailto:hello@abperfection.ie">hello@abperfection.ie</a></li>
+        <li><a href="https://www.instagram.com/homeperfectionrenovation">@homeperfectionrenovation</a></li>
+        <li><a href="about.html">About A&amp;B</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 A&amp;B Home Perfection Renovations. 31 Ash Park Avenue, Lucan, Co. Dublin.</p>
+    <div class="footer-badge">Fixed-Price Guarantee</div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  function closeMobileMenu() { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+
+  // Filter
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const items = document.querySelectorAll('.masonry-item');
+
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+
+      items.forEach(item => {
+        const cat = item.dataset.category;
+        if (filter === 'all' || cat === filter) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

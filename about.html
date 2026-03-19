@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — A&B Home Perfection Renovations</title>
+  <meta name="description" content="The story behind A&B Home Perfection Renovations. Dublin's premium turn-key renovation specialists — built to eliminate the contractor gap." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="images/web/team-artiom.webp" type="image/webp" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-charcoal:    #2C2C2C;
+      --color-oak:         #A07850;
+      --color-oak-light:   #C4A265;
+      --color-oak-dark:    #7A5C38;
+      --color-offwhite:    #F7F4F0;
+      --color-offwhite-2:  #EDE9E3;
+      --color-offwhite-3:  #E0DAD1;
+      --color-text-muted:  #6B6460;
+      --shadow-card:  0 4px 16px -4px rgba(44,44,44,0.10), 0 1px 4px -1px rgba(160,120,80,0.06);
+      --shadow-float: 0 16px 48px -8px rgba(44,44,44,0.18), 0 4px 16px -4px rgba(160,120,80,0.08);
+      --shadow-nav:   0 2px 12px -2px rgba(44,44,44,0.08);
+      --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--color-offwhite); color: var(--color-charcoal); font-family: 'DM Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    .grain-overlay { position: fixed; inset: 0; z-index: 9999; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.028; }
+
+    /* Nav */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 14px 48px; background: rgba(247,244,240,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: var(--shadow-nav); display: flex; align-items: center; justify-content: space-between; }
+    .nav-wordmark { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; color: var(--color-charcoal); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--color-text-muted); text-decoration: none; letter-spacing: 0.04em; position: relative; padding-bottom: 2px; transition: color 250ms; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--color-oak); transform: scaleX(0); transform-origin: left; transition: transform 250ms var(--ease-smooth); }
+    .nav-links a:hover { color: var(--color-oak); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a[aria-current="page"] { color: var(--color-oak); }
+    .nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+    .nav-cta { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; background: var(--color-oak); color: var(--color-offwhite); padding: 10px 22px; border-radius: 2px; text-decoration: none; letter-spacing: 0.04em; transition: transform 200ms var(--ease-spring), box-shadow 200ms, background 200ms; box-shadow: 0 2px 8px rgba(160,120,80,0.25); }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(160,120,80,0.30); background: var(--color-oak-light); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--color-charcoal); transition: transform 300ms var(--ease-smooth), opacity 200ms; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { position: fixed; inset: 0; z-index: 999; background: var(--color-charcoal); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 300ms var(--ease-smooth); }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 500; color: var(--color-offwhite); text-decoration: none; padding: 8px 0; transition: color 200ms; }
+    .mobile-menu a:hover { color: var(--color-oak-light); }
+    .mobile-menu .mobile-cta { margin-top: 32px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; background: var(--color-oak); color: var(--color-offwhite); padding: 12px 28px; border-radius: 2px; text-decoration: none; }
+    @media (max-width: 768px) { .nav { padding: 12px 24px; } .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
+
+    .eyebrow { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-oak); }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    @media (max-width: 768px) { .section-inner { padding: 0 24px; } }
+
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; background: var(--color-oak); color: var(--color-offwhite); padding: 14px 28px; border-radius: 2px; text-decoration: none; border: none; cursor: pointer; transition: transform 200ms var(--ease-spring), box-shadow 200ms, background 200ms; box-shadow: 0 4px 14px rgba(160,120,80,0.30); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(160,120,80,0.35); background: var(--color-oak-light); }
+    .btn-ghost-dark { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; background: transparent; color: var(--color-charcoal); padding: 14px 28px; border-radius: 2px; text-decoration: none; border: 1px solid rgba(44,44,44,0.25); transition: transform 200ms var(--ease-spring), border-color 200ms, color 200ms; }
+    .btn-ghost-dark:hover { transform: translateY(-2px); border-color: var(--color-oak); color: var(--color-oak); }
+
+    /* Page Hero */
+    .page-hero { min-height: 70vh; display: grid; grid-template-columns: 2fr 3fr; padding-top: 80px; }
+    .hero-images { position: relative; background: var(--color-offwhite-2); overflow: hidden; }
+    .hero-img-primary { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-img-secondary { position: absolute; bottom: -20px; right: -20px; width: 55%; aspect-ratio: 3/4; object-fit: cover; border: 4px solid var(--color-offwhite); border-radius: 1px; box-shadow: var(--shadow-float); }
+    .hero-text { background: var(--color-charcoal); padding: 80px 72px 80px 64px; display: flex; flex-direction: column; justify-content: center; }
+    @media (max-width: 900px) { .page-hero { grid-template-columns: 1fr; min-height: auto; } .hero-images { min-height: 320px; } .hero-text { padding: 64px 32px; } }
+
+    /* Founding story */
+    .story-body { max-width: 760px; margin: 0 auto; }
+    .story-body p { font-family: 'DM Sans', sans-serif; font-size: 17px; color: var(--color-charcoal); line-height: 1.80; margin-bottom: 28px; }
+    .pull-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 26px; font-weight: 400; color: var(--color-charcoal); line-height: 1.5; border-left: 2px solid var(--color-oak); padding-left: 32px; margin: 48px 0; }
+
+    /* Values */
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 64px; }
+    .value-item { }
+    .value-number { font-family: 'Cormorant Garamond', serif; font-size: 96px; font-weight: 500; color: rgba(160,120,80,0.13); line-height: 1; letter-spacing: -0.05em; margin-bottom: -24px; }
+    .value-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: var(--color-charcoal); letter-spacing: -0.02em; margin-bottom: 12px; }
+    .value-desc { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--color-text-muted); line-height: 1.70; }
+    .values-grid .value-item:nth-child(2) { margin-top: 48px; }
+    .values-grid .value-item:nth-child(3) { margin-top: 96px; }
+    @media (max-width: 768px) { .values-grid { grid-template-columns: 1fr; gap: 40px; } .values-grid .value-item:nth-child(2), .values-grid .value-item:nth-child(3) { margin-top: 0; } }
+
+    /* Project lead */
+    .lead-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center; }
+    @media (max-width: 768px) { .lead-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .lead-portrait { border-radius: 2px; overflow: hidden; }
+    .lead-portrait img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
+
+    /* Timeline */
+    .timeline { position: relative; padding: 96px 0; background: var(--color-charcoal); }
+    .timeline-inner { max-width: 720px; margin: 0 auto; padding: 0 48px; }
+    .timeline-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(160,120,80,0.25); }
+    .timeline-item { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 0; align-items: start; margin-bottom: 56px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-year { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500; color: var(--color-oak); letter-spacing: -0.03em; text-align: right; padding-right: 32px; line-height: 1.2; }
+    .timeline-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-oak); margin: 6px auto 0; flex-shrink: 0; }
+    .timeline-content { padding-left: 32px; }
+    .timeline-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--color-offwhite); letter-spacing: -0.01em; margin-bottom: 6px; }
+    .timeline-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; color: rgba(247,244,240,0.50); line-height: 1.65; }
+
+    /* WhatsApp CTA */
+    .whatsapp-cta { display: inline-flex; align-items: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; background: #25D366; color: white; padding: 14px 28px; border-radius: 2px; text-decoration: none; margin-top: 24px; transition: transform 200ms var(--ease-spring), box-shadow 200ms, opacity 200ms; box-shadow: 0 4px 14px rgba(37,211,102,0.30); }
+    .whatsapp-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.35); opacity: 0.92; }
+    .whatsapp-cta svg { width: 18px; height: 18px; fill: white; }
+
+    /* Footer */
+    footer { background: var(--color-charcoal); color: var(--color-offwhite); padding: 64px 0 32px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+    .footer-brand .wordmark { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--color-offwhite); letter-spacing: -0.02em; }
+    .footer-brand .tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(247,244,240,0.55); margin-top: 10px; line-height: 1.5; }
+    .footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,244,240,0.45); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-family: 'DM Sans', sans-serif; font-size: 14px; color: rgba(247,244,240,0.7); text-decoration: none; transition: color 200ms; }
+    .footer-col a:hover { color: var(--color-oak-light); }
+    .footer-bottom { max-width: 1200px; margin: 48px auto 0; padding: 24px 48px 0; border-top: 1px solid rgba(247,244,240,0.1); display: flex; align-items: center; justify-content: space-between; }
+    .footer-bottom p { font-family: 'DM Sans', sans-serif; font-size: 12px; color: rgba(247,244,240,0.35); }
+    .footer-badge { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--color-oak-light); border: 1px solid rgba(160,120,80,0.35); padding: 5px 12px; border-radius: 20px; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 36px; } .footer-grid, .footer-bottom { padding-left: 24px; padding-right: 24px; } }
+  </style>
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="index.html#lead-form" class="mobile-cta" onclick="closeMobileMenu()">Get a Free Estimate</a>
+  </nav>
+</div>
+
+<header class="nav" id="mainNav">
+  <a href="index.html" class="nav-wordmark" aria-label="A&B Home Perfection Renovations"><img src="images/web/logo-transparent.png" alt="A&B Home Perfection Renovations" style="height:36px;width:auto;" /></a>
+  <ul class="nav-links" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html" aria-current="page">About</a></li>
+  </ul>
+  <a href="index.html#lead-form" class="nav-cta">Book a Consultation</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ═══════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="hero-images" style="display:flex; align-items:center; justify-content:center; background:var(--color-offwhite-2); position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background: radial-gradient(ellipse at 30% 50%, rgba(160,120,80,0.10) 0%, transparent 65%), radial-gradient(ellipse at 80% 20%, rgba(160,120,80,0.06) 0%, transparent 60%);"></div>
+    <div style="position:relative; display:flex; flex-direction:column; align-items:center; gap:0; padding:48px;">
+      <img src="images/web/logo-transparent.png" alt="A&B Home Perfection Renovations" style="width:min(280px, 75%); height:auto; display:block;" />
+      <div style="margin-top:28px; width:40px; height:1px; background:var(--color-oak); opacity:0.5;"></div>
+      <p style="margin-top:20px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--color-text-muted); letter-spacing:0.01em; text-align:center; max-width:220px; line-height:1.6;">Dublin's turn-key renovation specialists</p>
+    </div>
+  </div>
+  <div class="hero-text">
+    <span class="eyebrow" style="color:rgba(160,120,80,0.8);">Who We Are</span>
+    <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(56px,6vw,80px); font-weight:500; color:var(--color-offwhite); letter-spacing:-0.04em; line-height:1.0; margin-top:16px; margin-bottom:24px;">
+      We're A&amp;B.
+    </h1>
+    <p style="font-family:'DM Sans',sans-serif; font-size:17px; color:rgba(247,244,240,0.65); line-height:1.75; max-width:440px;">
+      A Dublin renovation company built to do one thing well: take a home from first sketch to final lick of paint, under one roof, one contract, one fixed price.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOUNDING STORY
+══════════════════════════════════════════ -->
+<section style="padding:100px 0; background:var(--color-offwhite);">
+  <div class="section-inner">
+    <div class="story-body">
+      <span class="eyebrow">Our Story</span>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:500; color:var(--color-charcoal); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; margin-bottom:40px; max-width:560px;">
+        Why we built it differently.
+      </h2>
+      <p>We watched homeowners go through the same painful experience again and again. They'd hire a builder for the structure, then spend weeks chasing a separate painter, a flooring fitter, a joinery company — each one on a different schedule, each one with their own invoice. The house would sit 90% finished for months while trades played phone-tag.</p>
+      <p>We started A&amp;B to close that gap. Not by subcontracting more aggressively, but by building a team that could handle every stage internally. Our joiners, painters, tilers, and floor fitters all work under the same roof. When one stage finishes, the next starts — no waiting, no excuses.</p>
+
+      <div class="pull-quote">
+        "A home that is 90% finished is not a finished home. We don't hand over keys until every detail is done."
+      </div>
+
+      <p>Our name is our promise: Home Perfection. It's not a marketing phrase. It's the standard we hold every project to — and the reason we've never sent a client an invoice they weren't expecting.</p>
+      <p>Today we work across Dublin on attic conversions, kitchen renovations, and extensions. Every project is managed by a named project lead available on WhatsApp throughout. You always know who to call, what stage you're at, and exactly what you'll pay at the end.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     THE A&B DIFFERENCE — VALUES
+══════════════════════════════════════════ -->
+<section style="padding:96px 0; background:var(--color-offwhite-2);">
+  <div class="section-inner">
+    <span class="eyebrow">What Sets Us Apart</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:500; color:var(--color-charcoal); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; max-width:480px;">
+      The A&amp;B difference.
+    </h2>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-number">01</div>
+        <div class="value-title">Everything included</div>
+        <div class="value-desc">Painting, flooring, joinery — always in the quote. We don't leave you to organise the last 20% yourself. That's the Contractor Gap we built A&amp;B to close.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-number">02</div>
+        <div class="value-title">Fixed price, always</div>
+        <div class="value-desc">The number you sign is the number you pay. If scope changes, we tell you before we act — not after. No surprises, no additions, no exceptions.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-number">03</div>
+        <div class="value-title">One point of contact</div>
+        <div class="value-desc">You have a named project lead on WhatsApp throughout. They coordinate every trade, every delivery, every inspection — so you don't have to.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PROJECT LEAD / TEAM
+══════════════════════════════════════════ -->
+<section style="padding:96px 0; background:var(--color-offwhite);">
+  <div class="section-inner">
+    <div class="lead-grid">
+      <div class="lead-portrait">
+        <img src="images/web/team-artiom.webp" alt="Artiom Brieleanu — project lead, available on WhatsApp throughout your project" loading="lazy" decoding="async" />
+      </div>
+      <div>
+        <span class="eyebrow">Your Project Lead</span>
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,3.5vw,48px); font-weight:500; color:var(--color-charcoal); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; margin-bottom:20px;">
+          One person.<br>Full accountability.
+        </h2>
+        <p style="font-family:'DM Sans',sans-serif; font-size:16px; color:var(--color-text-muted); line-height:1.75; margin-bottom:16px;">
+          From your first consultation to the day we hand over the keys, you have a dedicated project lead. They know your project inside out, coordinate every trade on your behalf, and are reachable on WhatsApp throughout.
+        </p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:16px; color:var(--color-text-muted); line-height:1.75; margin-bottom:8px;">
+          No calling a main office number. No getting passed around. One person, responsible from start to finish.
+        </p>
+        <a href="https://wa.me/353873930239" class="whatsapp-cta" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.858L.036 23.507a.5.5 0 00.609.61l5.703-1.493A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.945 9.945 0 01-5.181-1.452l-.37-.22-3.862 1.012 1.032-3.764-.241-.387A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Chat with Artiom on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TEAM BIOS
+══════════════════════════════════════════ -->
+<section style="padding:96px 0; background:var(--color-offwhite-2);">
+  <div class="section-inner">
+    <span class="eyebrow">The Team</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:500; color:var(--color-charcoal); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; margin-bottom:56px; max-width:480px;">
+      The people behind the work.
+    </h2>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:48px;">
+      <div>
+        <div style="border-radius:2px; overflow:hidden; margin-bottom:24px;">
+          <img src="images/web/team-artiom.webp" alt="Artiom Brieleanu — Founder" style="width:100%; display:block; aspect-ratio:3/4; object-fit:cover;" loading="lazy" decoding="async" />
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:var(--color-charcoal); letter-spacing:-0.02em; margin-bottom:4px;">Artiom Brieleanu</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-oak); margin-bottom:14px;">Founder</div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--color-text-muted); line-height:1.75;">Artiom established A&amp;B with a vision to deliver high-quality work built on trust and attention to detail. With years of industry experience, he has built a strong reputation for consistently delivering to the highest standard.</p>
+      </div>
+      <div>
+        <div style="border-radius:2px; overflow:hidden; margin-bottom:24px;">
+          <img src="images/web/team-vasile.webp" alt="Vasile Braileanu — Specialist" style="width:100%; display:block; aspect-ratio:3/4; object-fit:cover;" loading="lazy" decoding="async" />
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:var(--color-charcoal); letter-spacing:-0.02em; margin-bottom:4px;">Vasile Braileanu</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-oak); margin-bottom:14px;">Specialist</div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--color-text-muted); line-height:1.75;">Vasile brings extensive hands-on experience and a strong practical approach to every project. His background in construction, combined with his focus on quality and detail, helps maintain the high standards A&amp;B is known for.</p>
+      </div>
+      <div>
+        <div style="border-radius:2px; overflow:hidden; margin-bottom:24px;">
+          <img src="images/web/team-lilian.webp" alt="Lilian Braileanu — Designer" style="width:100%; display:block; aspect-ratio:3/4; object-fit:cover;" loading="lazy" decoding="async" />
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:var(--color-charcoal); letter-spacing:-0.02em; margin-bottom:4px;">Lilian Braileanu</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-oak); margin-bottom:14px;">Designer</div>
+        <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--color-text-muted); line-height:1.75;">Lilian combines a background in architectural technology with modern design thinking. He works closely with clients to bring ideas to life — ensuring each design is functional, tailored, and visually strong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TIMELINE
+══════════════════════════════════════════ -->
+<section class="timeline">
+  <div class="section-inner" style="position:relative;">
+    <span class="eyebrow" style="color:rgba(160,120,80,0.8);">Our Journey</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:500; color:var(--color-offwhite); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; margin-bottom:64px; max-width:480px;">
+      Built over a decade of Dublin renovations.
+    </h2>
+
+    <div style="position:relative;">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:1px;background:rgba(160,120,80,0.25);margin-left:120px;"></div>
+
+      <div style="display:flex;gap:0;margin-bottom:52px;align-items:flex-start;">
+        <div style="width:120px;flex-shrink:0;text-align:right;padding-right:32px;font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;color:var(--color-oak);letter-spacing:-0.03em;line-height:1.2;">2014</div>
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--color-oak);flex-shrink:0;margin-top:8px;position:relative;z-index:1;"></div>
+        <div style="padding-left:32px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--color-offwhite);margin-bottom:6px;">Founded in Dublin</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(247,244,240,0.50);line-height:1.65;">Started with a single attic conversion in Ranelagh. A two-person team with a fixed-price guarantee nobody else was offering.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:0;margin-bottom:52px;align-items:flex-start;">
+        <div style="width:120px;flex-shrink:0;text-align:right;padding-right:32px;font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;color:var(--color-oak);letter-spacing:-0.03em;line-height:1.2;">2017</div>
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--color-oak);flex-shrink:0;margin-top:8px;position:relative;z-index:1;"></div>
+        <div style="padding-left:32px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--color-offwhite);margin-bottom:6px;">Expanded to Kitchen Renovations</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(247,244,240,0.50);line-height:1.65;">Added our in-house joinery team. Kitchens became our second service — bespoke cabinetry and full finishing included as standard.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:0;margin-bottom:52px;align-items:flex-start;">
+        <div style="width:120px;flex-shrink:0;text-align:right;padding-right:32px;font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;color:var(--color-oak);letter-spacing:-0.03em;line-height:1.2;">2020</div>
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--color-oak);flex-shrink:0;margin-top:8px;position:relative;z-index:1;"></div>
+        <div style="padding-left:32px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--color-offwhite);margin-bottom:6px;">Extensions and 3D Design</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(247,244,240,0.50);line-height:1.65;">Launched extensions as our third service. Introduced 3D design visuals so clients could see the finished space before work started.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:0;margin-bottom:52px;align-items:flex-start;">
+        <div style="width:120px;flex-shrink:0;text-align:right;padding-right:32px;font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;color:var(--color-oak);letter-spacing:-0.03em;line-height:1.2;">2023</div>
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--color-oak);flex-shrink:0;margin-top:8px;position:relative;z-index:1;"></div>
+        <div style="padding-left:32px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--color-offwhite);margin-bottom:6px;">100 homes completed</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(247,244,240,0.50);line-height:1.65;">Passed the milestone of 100 completed Dublin home renovations — every one finished to spec, on budget, and within the quoted price.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:0;align-items:flex-start;">
+        <div style="width:120px;flex-shrink:0;text-align:right;padding-right:32px;font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;color:var(--color-oak);letter-spacing:-0.03em;line-height:1.2;">2026</div>
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--color-oak-light);border:2px solid var(--color-oak);flex-shrink:0;margin-top:8px;position:relative;z-index:1;"></div>
+        <div style="padding-left:32px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--color-offwhite);margin-bottom:6px;">Still building</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(247,244,240,0.50);line-height:1.65;">The standard hasn't changed. Same fixed-price guarantee. Same single point of contact. Every home finished to the last lick of paint.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════════ -->
+<section style="padding:100px 0; background:var(--color-offwhite); text-align:center;">
+  <div class="section-inner">
+    <span class="eyebrow">Start Your Project</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,56px); font-weight:500; color:var(--color-charcoal); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; margin-bottom:16px; max-width:600px; margin-left:auto; margin-right:auto;">
+      Every project starts with a single conversation.
+    </h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:16px; color:var(--color-text-muted); max-width:440px; margin:0 auto 36px; line-height:1.7;">
+      Tell us about your space and we'll be back with a free, detailed estimate within 24 hours.
+    </p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="index.html#lead-form" class="btn-primary">Book a Consultation</a>
+      <a href="portfolio.html" class="btn-ghost-dark">View Our Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="wordmark"><img src="images/web/logo-transparent.png" alt="A&B Home Perfection Renovations" style="height:48px;width:auto;margin-bottom:8px;" /></div>
+      <div class="tagline">"From First Sketch to Final Lick of Paint."</div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html#attic">Attic Conversions</a></li>
+        <li><a href="services.html#kitchen">Kitchen Renovations</a></li>
+        <li><a href="services.html#extension">Extensions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/353873930239">WhatsApp Us</a></li>
+        <li><a href="mailto:hello@abperfection.ie">hello@abperfection.ie</a></li>
+        <li><a href="https://www.instagram.com/homeperfectionrenovation">@homeperfectionrenovation</a></li>
+        <li><a href="portfolio.html">Our Work</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 A&amp;B Home Perfection Renovations. 31 Ash Park Avenue, Lucan, Co. Dublin.</p>
+    <div class="footer-badge">Fixed-Price Guarantee</div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { const isOpen = mobileMenu.classList.toggle('open'); hamburger.classList.toggle('open', isOpen); hamburger.setAttribute('aria-expanded', String(isOpen)); document.body.style.overflow = isOpen ? 'hidden' : ''; });
+  function closeMobileMenu() { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+</script>
+</body>
+</html>

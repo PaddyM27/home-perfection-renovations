@@ -1,0 +1,17 @@
+# Dev server
+node_modules/
+
+# Screenshots (build artefacts)
+temporary screenshots/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Zip archives
+*.zip
+
+# Logs
+*.log
+npm-debug.log*

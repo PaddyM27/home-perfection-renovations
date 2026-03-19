@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A&B Home Perfection Renovations — Dublin's Premier Turn-Key Specialists</title>
+  <meta name="description" content="From First Sketch to Final Lick of Paint. Premium turn-key attic conversions, kitchen renovations and extensions in Dublin. Fixed-price guarantee." />
+
+  <link rel="preload" href="Interior-Design-Attic.mp4" as="video" type="video/mp4" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: '#2C2C2C',
+            oak:      '#A07850',
+            'oak-light': '#C4A265',
+            'oak-dark':  '#7A5C38',
+            offwhite:    '#F7F4F0',
+            'offwhite-2':'#EDE9E3',
+            'offwhite-3':'#E0DAD1',
+            'text-muted':'#6B6460',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans:    ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --color-charcoal:    #2C2C2C;
+      --color-oak:         #A07850;
+      --color-oak-light:   #C4A265;
+      --color-oak-dark:    #7A5C38;
+      --color-offwhite:    #F7F4F0;
+      --color-offwhite-2:  #EDE9E3;
+      --color-offwhite-3:  #E0DAD1;
+      --color-text-muted:  #6B6460;
+      --shadow-card:  0 4px 16px -4px rgba(44,44,44,0.10), 0 1px 4px -1px rgba(160,120,80,0.06);
+      --shadow-float: 0 16px 48px -8px rgba(44,44,44,0.18), 0 4px 16px -4px rgba(160,120,80,0.08);
+      --shadow-nav:   0 2px 12px -2px rgba(44,44,44,0.08);
+      --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--color-offwhite); color: var(--color-charcoal); font-family: 'DM Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    /* ─── Grain Overlay ─── */
+    .grain-overlay {
+      position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+    }
+
+    /* ─── Navigation ─── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 24px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 300ms var(--ease-smooth), padding 300ms var(--ease-smooth), box-shadow 300ms var(--ease-smooth);
+    }
+    .nav.scrolled {
+      background: rgba(247,244,240,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 14px 48px;
+      box-shadow: var(--shadow-nav);
+    }
+    .nav-wordmark { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; color: var(--color-offwhite); text-decoration: none; letter-spacing: -0.02em; transition: color 300ms; }
+    .nav.scrolled .nav-wordmark { color: var(--color-charcoal); }
+    .nav.scrolled .nav-wordmark img { filter: invert(1) brightness(0); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      color: rgba(247,244,240,0.85); text-decoration: none; letter-spacing: 0.04em;
+      position: relative; padding-bottom: 2px;
+      transition: color 250ms;
+    }
+    .nav.scrolled .nav-links a { color: var(--color-text-muted); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: var(--color-oak); transform: scaleX(0); transform-origin: left;
+      transition: transform 250ms var(--ease-smooth);
+    }
+    .nav-links a:hover { color: var(--color-oak); }
+    .nav.scrolled .nav-links a:hover { color: var(--color-oak); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a[aria-current="page"] { color: var(--color-oak); }
+    .nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+
+    .nav-cta {
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      background: var(--color-oak); color: var(--color-offwhite);
+      padding: 10px 22px; border-radius: 2px; text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: transform 200ms var(--ease-spring), box-shadow 200ms var(--ease-smooth), background 200ms;
+      box-shadow: 0 2px 8px rgba(160,120,80,0.25);
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(160,120,80,0.30); background: var(--color-oak-light); }
+    .nav-cta:active { transform: translateY(1px); box-shadow: 0 1px 4px rgba(160,120,80,0.20); }
+
+    /* Mobile hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--color-offwhite); transition: transform 300ms var(--ease-smooth), opacity 200ms; }
+    .nav.scrolled .hamburger span { background: var(--color-charcoal); }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--color-charcoal);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 300ms var(--ease-smooth);
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 500;
+      color: var(--color-offwhite); text-decoration: none; letter-spacing: -0.02em;
+      padding: 8px 0; transition: color 200ms;
+    }
+    .mobile-menu a:hover { color: var(--color-oak-light); }
+    .mobile-menu .mobile-cta {
+      margin-top: 32px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+      background: var(--color-oak); color: var(--color-offwhite);
+      padding: 12px 28px; border-radius: 2px; text-decoration: none; letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 18px 24px; }
+      .nav.scrolled { padding: 12px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      position: relative; min-height: 100dvh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 0; pointer-events: none;
+    }
+    .hero-mask {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(44,44,44,0.62) 0%, transparent 100%),
+        radial-gradient(ellipse 140% 140% at 50% 50%, transparent 30%, rgba(247,244,240,0.82) 68%, #F7F4F0 100%),
+        linear-gradient(to bottom, rgba(44,44,44,0.20) 0%, transparent 20%, transparent 60%, #F7F4F0 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; max-width: 860px;
+      padding: 0 32px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow  { animation: fadeUp 500ms var(--ease-smooth) 100ms both; }
+    .hero-headline { animation: fadeUp 500ms var(--ease-smooth) 220ms both; }
+    .hero-body     { animation: fadeUp 500ms var(--ease-smooth) 340ms both; }
+    .hero-ctas     { animation: fadeUp 500ms var(--ease-smooth) 460ms both; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-eyebrow, .hero-headline, .hero-body, .hero-ctas { animation: none; }
+      .hero-video { display: none; }
+    }
+
+    /* ─── Eyebrow ─── */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-oak);
+    }
+
+    /* ─── Buttons ─── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.05em; background: var(--color-oak); color: var(--color-offwhite);
+      padding: 14px 28px; border-radius: 2px; text-decoration: none; border: none; cursor: pointer;
+      transition: transform 200ms var(--ease-spring), box-shadow 200ms var(--ease-smooth), background 200ms;
+      box-shadow: 0 4px 14px rgba(160,120,80,0.30);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(160,120,80,0.35); background: var(--color-oak-light); }
+    .btn-primary:active { transform: translateY(1px); box-shadow: 0 2px 6px rgba(160,120,80,0.20); }
+    .btn-primary:focus-visible { outline: 2px solid var(--color-oak); outline-offset: 3px; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.05em; background: transparent; color: var(--color-offwhite);
+      padding: 14px 28px; border-radius: 2px; text-decoration: none;
+      border: 1px solid rgba(247,244,240,0.45); cursor: pointer;
+      transition: transform 200ms var(--ease-spring), border-color 200ms, background 200ms;
+    }
+    .btn-ghost:hover { transform: translateY(-2px); border-color: rgba(247,244,240,0.85); background: rgba(247,244,240,0.08); }
+    .btn-ghost:active { transform: translateY(1px); }
+    .btn-ghost:focus-visible { outline: 2px solid var(--color-offwhite); outline-offset: 3px; }
+
+    .btn-ghost-dark {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.05em; background: transparent; color: var(--color-charcoal);
+      padding: 14px 28px; border-radius: 2px; text-decoration: none;
+      border: 1px solid rgba(44,44,44,0.30); cursor: pointer;
+      transition: transform 200ms var(--ease-spring), border-color 200ms, background 200ms;
+    }
+    .btn-ghost-dark:hover { transform: translateY(-2px); border-color: var(--color-oak); color: var(--color-oak); }
+    .btn-ghost-dark:active { transform: translateY(1px); }
+
+    /* ─── Section base ─── */
+    .section { padding: 100px 0; }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    @media (max-width: 768px) { .section { padding: 72px 0; } .section-inner { padding: 0 24px; } .nav { padding: 18px 24px; } }
+
+    /* ─── Trust Bar ─── */
+    .trust-bar {
+      background: var(--color-offwhite); border-top: 1px solid var(--color-offwhite-3);
+      padding: 48px 0;
+    }
+    .trust-bar-inner { max-width: 960px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; align-items: center; gap: 0; }
+    .trust-divider { width: 1px; height: 48px; background: var(--color-offwhite-3); }
+    .trust-item { text-align: center; padding: 0 32px; }
+    .trust-item-number { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500; color: var(--color-charcoal); letter-spacing: -0.03em; line-height: 1; }
+    .trust-item-label { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); margin-top: 8px; }
+    @media (max-width: 640px) { .trust-bar-inner { grid-template-columns: 1fr; gap: 32px; } .trust-divider { display: none; } }
+
+    /* ─── Value Prop ─── */
+    .value-prop { background: var(--color-offwhite-2); }
+    .value-prop-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; align-items: start; }
+    .value-prop-pullquote {
+      border-left: 2px solid var(--color-oak); padding-left: 28px; margin-top: 16px;
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; font-weight: 400;
+      color: var(--color-charcoal); line-height: 1.5;
+    }
+    @media (max-width: 900px) { .value-prop-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ─── Services Overview ─── */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; align-items: start;
+    }
+    .service-tile {
+      position: relative; overflow: hidden; border-radius: 3px; cursor: pointer;
+      background: var(--color-offwhite-2);
+      box-shadow: 0 2px 12px -4px rgba(44,44,44,0.10), 0 1px 4px -2px rgba(160,120,80,0.06);
+      transition: transform 350ms var(--ease-smooth), box-shadow 350ms var(--ease-smooth);
+    }
+    .service-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px -8px rgba(44,44,44,0.18), 0 4px 12px -4px rgba(160,120,80,0.10);
+    }
+    /* Stagger heights for visual rhythm */
+    .service-tile:nth-child(1) { margin-top: 0; }
+    .service-tile:nth-child(2) { margin-top: 32px; }
+    .service-tile:nth-child(3) { margin-top: 0; }
+    .service-tile-img-wrap { position: relative; overflow: hidden; aspect-ratio: 3/4; }
+    .service-tile img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transition: transform 600ms var(--ease-smooth); }
+    .service-tile:hover img { transform: scale(1.05); }
+    /* Subtle colour-tint overlay always visible */
+    .service-tile-img-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(44,44,44,0.45) 100%);
+      pointer-events: none;
+    }
+    /* Number badge top-left */
+    .service-num {
+      position: absolute; top: 18px; left: 20px; z-index: 2;
+      font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 500;
+      color: rgba(247,244,240,0.7); letter-spacing: 0.04em;
+    }
+    /* Info panel below image */
+    .service-info {
+      padding: 22px 24px 24px; background: white;
+      border-top: 2px solid var(--color-offwhite-2);
+    }
+    .service-label-new {
+      font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500;
+      color: var(--color-charcoal); letter-spacing: -0.02em; line-height: 1.2;
+    }
+    .service-desc {
+      font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--color-text-muted);
+      line-height: 1.6; margin-top: 7px;
+    }
+    .service-link-new {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+      font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--color-oak); text-decoration: none;
+      transition: gap 200ms var(--ease-smooth), color 200ms;
+    }
+    .service-link-new:hover { gap: 10px; color: var(--color-oak-dark); }
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-tile:nth-child(2) { margin-top: 0; }
+      .service-tile-img-wrap { aspect-ratio: 4/3; }
+    }
+
+    /* ─── Portfolio Slider ─── */
+    .portfolio-teaser { background: var(--color-charcoal); overflow: hidden; }
+    .portfolio-slider-wrap { position: relative; margin-top: 48px; }
+    .portfolio-slider {
+      display: flex; gap: 14px;
+      overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      scrollbar-width: none; cursor: grab;
+    }
+    .portfolio-slider:active { cursor: grabbing; }
+    .portfolio-slider::-webkit-scrollbar { display: none; }
+    .slider-card {
+      flex: 0 0 300px; scroll-snap-align: start;
+      position: relative; border-radius: 3px; overflow: hidden;
+      text-decoration: none; display: block;
+    }
+    .slider-card:first-child { flex: 0 0 380px; }
+    .slider-card-img {
+      width: 100%; height: 440px; object-fit: cover; display: block;
+      transition: transform 600ms var(--ease-smooth);
+    }
+    .slider-card:hover .slider-card-img { transform: scale(1.06); }
+    .slider-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,18,16,0.88) 0%, rgba(20,18,16,0.12) 55%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
+      transition: background 300ms;
+    }
+    .slider-card:hover .slider-card-overlay {
+      background: linear-gradient(to top, rgba(20,18,16,0.94) 0%, rgba(20,18,16,0.22) 60%, transparent 100%);
+    }
+    .slider-card-cat {
+      font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-oak-light);
+      margin-bottom: 6px;
+    }
+    .slider-card-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 500;
+      color: var(--color-offwhite); letter-spacing: -0.02em; line-height: 1.25;
+    }
+    .slider-card-arrow {
+      position: absolute; top: 18px; right: 18px;
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 1px solid rgba(247,244,240,0.28); background: rgba(247,244,240,0.06);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(6px);
+      transition: opacity 250ms, transform 250ms var(--ease-spring), background 200ms, border-color 200ms;
+    }
+    .slider-card:hover .slider-card-arrow { opacity: 1; transform: translateY(0); }
+    .slider-card:hover .slider-card-arrow { background: rgba(160,120,80,0.18); border-color: var(--color-oak); }
+    /* CTA end card */
+    .slider-cta-card {
+      flex: 0 0 240px; scroll-snap-align: start;
+      border-radius: 3px; border: 1px solid rgba(247,244,240,0.12);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 20px; padding: 32px; text-align: center; text-decoration: none;
+      transition: border-color 300ms, background 300ms;
+    }
+    .slider-cta-card:hover { border-color: var(--color-oak); background: rgba(160,120,80,0.06); }
+    .slider-cta-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      border: 1px solid rgba(160,120,80,0.4); background: rgba(160,120,80,0.08);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 300ms var(--ease-spring), border-color 300ms;
+    }
+    .slider-cta-card:hover .slider-cta-icon { transform: scale(1.1); border-color: var(--color-oak); }
+    .slider-cta-label {
+      font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500;
+      color: var(--color-offwhite); letter-spacing: -0.02em; line-height: 1.25;
+    }
+    .slider-cta-sub {
+      font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--color-text-muted);
+      letter-spacing: 0.04em;
+    }
+    /* Slider footer nav */
+    .slider-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 28px; flex-wrap: wrap; gap: 16px;
+    }
+    .slider-dots { display: flex; gap: 6px; align-items: center; }
+    .slider-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(247,244,240,0.18);
+      transition: background 250ms, transform 250ms var(--ease-spring);
+      cursor: pointer;
+    }
+    .slider-dot.active { background: var(--color-oak); transform: scale(1.4); }
+    .slider-btns { display: flex; gap: 8px; }
+    .slider-btn {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(247,244,240,0.18); background: transparent;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: rgba(247,244,240,0.5);
+      transition: border-color 200ms, color 200ms, background 200ms, transform 150ms;
+    }
+    .slider-btn:hover { border-color: var(--color-oak); color: var(--color-oak); background: rgba(160,120,80,0.08); }
+    .slider-btn:active { transform: scale(0.94); }
+    @media (max-width: 640px) {
+      .slider-card { flex: 0 0 260px; } .slider-card:first-child { flex: 0 0 280px; }
+      .slider-card-img { height: 360px; } .slider-cta-card { flex: 0 0 200px; }
+    }
+
+    /* ─── Process ─── */
+    .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px; margin-top: 64px; }
+    .process-step { position: relative; }
+    .process-number {
+      font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 500;
+      color: rgba(160,120,80,0.14); line-height: 1; letter-spacing: -0.04em; margin-bottom: -20px;
+    }
+    .process-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--color-charcoal); letter-spacing: -0.02em; margin-bottom: 10px; }
+    .process-desc { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--color-text-muted); line-height: 1.65; }
+    @media (max-width: 900px) { .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; } }
+    @media (max-width: 500px) { .process-steps { grid-template-columns: 1fr; } }
+
+    /* ─── Lead Form ─── */
+    .lead-form-section { background: var(--color-charcoal); }
+    .form-panel {
+      max-width: 680px; margin: 56px auto 0;
+      background: #fff; border-radius: 2px;
+      box-shadow: var(--shadow-float);
+      overflow: hidden;
+    }
+    .form-header { padding: 36px 40px 28px; border-bottom: 1px solid var(--color-offwhite-3); }
+    .form-header h3 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500; letter-spacing: -0.02em; color: var(--color-charcoal); }
+    .form-header p { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--color-text-muted); margin-top: 6px; }
+
+    /* Progress dots */
+    .form-progress { display: flex; align-items: center; gap: 0; padding: 20px 40px; border-bottom: 1px solid var(--color-offwhite-3); }
+    .progress-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--color-offwhite-3);
+      transition: background 250ms, transform 250ms var(--ease-spring);
+    }
+    .progress-dot.active { background: var(--color-oak); transform: scale(1.3); }
+    .progress-dot.done  { background: var(--color-oak-light); }
+    .progress-line { flex: 1; height: 1px; background: var(--color-offwhite-3); margin: 0 6px; }
+
+    /* Form steps */
+    .form-body { padding: 32px 40px; }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+
+    .form-step-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--color-charcoal); margin-bottom: 24px; letter-spacing: -0.01em; }
+
+    /* Radio image cards (Step 1) */
+    .project-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 560px) { .project-cards { grid-template-columns: 1fr; } .yesno-cards { grid-template-columns: 1fr; } .form-body { padding: 24px; } .form-header { padding: 24px 24px 20px; } .form-progress { padding: 16px 24px; } }
+    .project-card { position: relative; cursor: pointer; }
+    .project-card input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .project-card-inner {
+      border: 1.5px solid var(--color-offwhite-3); border-radius: 2px; overflow: hidden;
+      transition: border-color 200ms, box-shadow 200ms;
+    }
+    .project-card input:checked ~ .project-card-inner { border-color: var(--color-oak); box-shadow: 0 0 0 2px rgba(160,120,80,0.2); }
+    .project-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .project-card-label { padding: 10px 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--color-charcoal); }
+    .project-card-check {
+      position: absolute; top: 8px; right: 8px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--color-oak); display: none; align-items: center; justify-content: center;
+    }
+    .project-card input:checked ~ .project-card-check { display: flex; }
+    .project-card-check svg { width: 10px; height: 10px; stroke: white; }
+
+    /* Form inputs */
+    .form-field { margin-bottom: 20px; }
+    .form-field label { display: block; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--color-charcoal); margin-bottom: 6px; }
+    .form-field input, .form-field select {
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid var(--color-offwhite-3); border-radius: 2px;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--color-charcoal);
+      background: #fff; outline: none;
+      transition: border-color 200ms, box-shadow 200ms;
+    }
+    .form-field input:focus, .form-field select:focus {
+      border-color: var(--color-oak);
+      box-shadow: 0 0 0 3px rgba(160,120,80,0.12);
+    }
+    .form-field .hint { font-size: 12px; color: var(--color-text-muted); margin-top: 5px; }
+    .form-field .error { font-size: 12px; color: #C0392B; margin-top: 5px; display: none; }
+    .form-field.has-error input { border-color: #C0392B; }
+    .form-field.has-error .error { display: block; }
+
+    /* Phone input with prefix */
+    .phone-wrap { display: flex; }
+    .phone-prefix {
+      padding: 12px 14px; background: var(--color-offwhite-2);
+      border: 1.5px solid var(--color-offwhite-3); border-right: none; border-radius: 2px 0 0 2px;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+    .phone-wrap input { border-radius: 0 2px 2px 0; }
+
+    /* Step 4 — Yes/No toggle */
+    .yesno-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .yesno-card { cursor: pointer; }
+    .yesno-card input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .yesno-inner {
+      border: 1.5px solid var(--color-offwhite-3); border-radius: 2px;
+      padding: 20px 16px; text-align: center;
+      transition: border-color 200ms, background 200ms, color 200ms;
+    }
+    .yesno-inner .yn-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--color-charcoal); }
+    .yesno-inner .yn-desc { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--color-text-muted); margin-top: 4px; }
+    .yesno-card input:checked ~ .yesno-inner { background: var(--color-oak); border-color: var(--color-oak); }
+    .yesno-card input:checked ~ .yesno-inner .yn-title { color: white; }
+    .yesno-card input:checked ~ .yesno-inner .yn-desc { color: rgba(255,255,255,0.75); }
+
+    /* Form navigation */
+    .form-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--color-offwhite-3); }
+    .form-back { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--color-text-muted); background: none; border: none; cursor: pointer; text-decoration: underline; padding: 0; }
+    .form-back:hover { color: var(--color-charcoal); }
+
+    .btn-submit {
+      width: 100%; padding: 16px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.06em;
+      background: var(--color-oak); color: white; border: none; border-radius: 2px; cursor: pointer;
+      transition: transform 200ms var(--ease-spring), box-shadow 200ms, background 200ms;
+      box-shadow: 0 4px 14px rgba(160,120,80,0.30);
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(160,120,80,0.35); background: var(--color-oak-light); }
+    .btn-submit:active { transform: translateY(1px); }
+
+    /* Success state */
+    .form-success { display: none; text-align: center; padding: 48px 40px; }
+    .form-success.active { display: block; }
+    .success-tick { width: 56px; height: 56px; margin: 0 auto 20px; }
+    .success-tick circle { stroke: var(--color-oak); stroke-width: 2; fill: none; }
+    .success-tick path { stroke: var(--color-oak); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ─── Testimonials ─── */
+    .testimonials { background: var(--color-offwhite-2); }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; }
+    .testimonial-card { border-left: 2px solid var(--color-oak); padding-left: 28px; }
+    .testimonial-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; font-weight: 400; color: var(--color-charcoal); line-height: 1.55; }
+    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .testimonial-stars svg { width: 14px; height: 14px; fill: var(--color-oak); }
+    .testimonial-author { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--color-text-muted); margin-top: 16px; }
+    @media (max-width: 640px) { .testimonials-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--color-charcoal); color: var(--color-offwhite);
+      padding: 64px 0 32px;
+    }
+    .footer-grid { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+    .footer-brand .wordmark { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--color-offwhite); letter-spacing: -0.02em; }
+    .footer-brand .tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(247,244,240,0.55); margin-top: 10px; line-height: 1.5; }
+    .footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,244,240,0.45); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-family: 'DM Sans', sans-serif; font-size: 14px; color: rgba(247,244,240,0.7); text-decoration: none; transition: color 200ms; }
+    .footer-col a:hover { color: var(--color-oak-light); }
+    .footer-bottom { max-width: 1200px; margin: 48px auto 0; padding: 24px 48px 0; border-top: 1px solid rgba(247,244,240,0.1); display: flex; align-items: center; justify-content: space-between; }
+    .footer-bottom p { font-family: 'DM Sans', sans-serif; font-size: 12px; color: rgba(247,244,240,0.35); }
+    .footer-badge { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--color-oak-light); border: 1px solid rgba(160,120,80,0.35); padding: 5px 12px; border-radius: 20px; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 36px; } .footer-grid, .footer-bottom { padding-left: 24px; padding-right: 24px; } }
+  </style>
+</head>
+<body>
+
+<!-- Grain overlay -->
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="#lead-form" class="mobile-cta" onclick="closeMobileMenu()">Get a Free Estimate</a>
+  </nav>
+</div>
+
+<!-- Navigation -->
+<header class="nav" id="mainNav">
+  <a href="index.html" class="nav-wordmark" aria-label="A&B Home Perfection Renovations"><img src="images/web/logo-transparent.png" alt="A&B Home Perfection Renovations" style="height:36px;width:auto;" /></a>
+  <ul class="nav-links" role="list">
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="#lead-form" class="nav-cta">Book a Consultation</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ═══════════════════════════════════════
+     SECTION 1 — HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+  <video class="hero-video" autoplay muted playsinline loop preload="auto"
+         disablepictureinpicture x-webkit-airplay="deny"
+         style="background:#2C2C2C;">
+    <source src="Interior-Design-Attic.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-mask" aria-hidden="true"></div>
+  <div class="hero-content">
+    <span class="eyebrow hero-eyebrow">Dublin's Premier Turn-Key Renovation Specialists</span>
+    <h1 class="hero-headline" style="font-family:'Cormorant Garamond',serif; font-size:clamp(48px,7vw,88px); font-weight:500; color:#F7F4F0; letter-spacing:-0.03em; line-height:1.08; margin:20px 0 24px;">
+      From First Sketch to<br>Final Lick of Paint.
+    </h1>
+    <p class="hero-body" style="font-family:'DM Sans',sans-serif; font-size:17px; color:rgba(247,244,240,0.82); line-height:1.7; max-width:560px; margin:0 auto 36px;">
+      One price. One team. No contractor juggling. We handle everything — from structural works to painting, flooring, and joinery — under a single fixed-price guarantee.
+    </p>
+    <div class="hero-ctas" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="#lead-form" class="btn-primary">Get Your Free Estimate</a>
+      <a href="portfolio.html" class="btn-ghost">View Our Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 2 — TRUST BAR
+══════════════════════════════════════════ -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="trust-item-number">Fixed</div>
+      <div class="trust-item-label">Price Guarantee</div>
+    </div>
+    <div class="trust-divider" aria-hidden="true"></div>
+    <div class="trust-item">
+      <div class="trust-item-number">100+</div>
+      <div class="trust-item-label">Dublin Homes Transformed</div>
+    </div>
+    <div class="trust-divider" aria-hidden="true"></div>
+    <div class="trust-item">
+      <div class="trust-item-number">One</div>
+      <div class="trust-item-label">Point of Contact</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 3 — VALUE PROPOSITION
+══════════════════════════════════════════ -->
+<section class="section value-prop">
+  <div class="section-inner">
+    <div class="value-prop-grid">
+      <div>
+        <span class="eyebrow">Why A&amp;B</span>
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(36px,4vw,52px); font-weight:500; color:var(--color-charcoal); letter-spacing:-0.03em; line-height:1.1; margin:16px 0 28px;">
+          One renovator.<br>Everything included.
+        </h2>
+        <p style="color:var(--color-text-muted); margin-bottom:18px; font-size:16px;">
+          Most builders leave you with a shell. You spend weeks chasing a separate painter, a flooring fitter, a joinery company — coordinating schedules, managing disputes, absorbing surprise costs.
+        </p>
+        <p style="color:var(--color-text-muted); margin-bottom:18px; font-size:16px;">
+          We built A&amp;B to close that gap entirely. From the structural groundwork to the final coat of paint on your skirting boards, every trade is managed under one roof, one contract, one price.
+        </p>
+        <p style="color:var(--color-text-muted); font-size:16px;">
+          The result is a home that is finished. Not 90% finished. Finished.
+        </p>
+      </div>
+      <div>
+        <div class="value-prop-pullquote">
+          "The price we quote is the price you pay. We've never sent a surprise invoice and we never will."
+        </div>
+        <div style="margin-top:48px; padding:28px; background:var(--color-offwhite); border-radius:2px; box-shadow:var(--shadow-card);">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="display:flex; align-items:flex-start; gap:12px;">
+              <div style="width:6px; height:6px; border-radius:50%; background:var(--color-oak); margin-top:8px; flex-shrink:0;"></div>
+              <span style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--color-charcoal);">Dedicated WhatsApp project lead — reachable throughout</span>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:12px;">
+              <div style="width:6px; height:6px; border-radius:50%; background:var(--color-oak); margin-top:8px; flex-shrink:0;"></div>
+              <span style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--color-charcoal);">3D design visuals before a single wall is touched</span>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:12px;">
+              <div style="width:6px; height:6px; border-radius:50%; background:var(--color-oak); margin-top:8px; flex-shrink:0;"></div>
+              <span style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--color-charcoal);">Painting, flooring &amp; joinery included in one fixed price</span>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:12px;">
+              <div style="width:6px; height:6px; border-radius:50%; background:var(--color-oak); margin-top:8px; flex-shrink:0;"></div>
+              <span style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--color-charcoal);">Full certificates of compliance on structural works</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 4 — SERVICES OVERVIEW
+══════════════════════════════════════════ -->
+<section class="section" style="background:var(--color-offwhite);">
+  <div class="section-inner">
+    <span class="eyebrow">What We Build</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:500; color:var(--color-charcoal); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; max-width:480px;">
+      Three specialisations.<br>One fixed price.
+    </h2>
+    <div class="services-grid">
+
+      <!-- 01 Attic Conversions -->
+      <div class="service-tile">
+        <div class="service-tile-img-wrap">
+          <span class="service-num">01</span>
+          <img src="images/web/attic-bathroom-marble.webp" alt="Luxury attic en-suite with marble tiles and LED mirror" loading="lazy" decoding="async" />
+        </div>
+        <div class="service-info">
+          <div class="service-label-new">Attic Conversions</div>
+          <p class="service-desc">Transform your unused loft into a bedroom, home office, or en-suite. Full structural and finish works included.</p>
+          <a href="services.html#attic" class="service-link-new">Explore service →</a>
+        </div>
+      </div>
+
+      <!-- 02 Kitchen Renovations -->
+      <div class="service-tile">
+        <div class="service-tile-img-wrap">
+          <span class="service-num">02</span>
+          <img src="images/web/kitchen-clondalkin-1.webp" alt="Bespoke sage green shaker kitchen with island and oak worktop" loading="lazy" decoding="async" />
+        </div>
+        <div class="service-info">
+          <div class="service-label-new">Kitchen Renovations</div>
+          <p class="service-desc">Bespoke cabinetry, worktops, tiling and appliance fitting — designed around how you actually cook and live.</p>
+          <a href="services.html#kitchen" class="service-link-new">Explore service →</a>
+        </div>
+      </div>
+
+      <!-- 03 Extensions -->
+      <div class="service-tile">
+        <div class="service-tile-img-wrap">
+          <span class="service-num">03</span>
+          <img src="images/web/extension-dun-laoghaire-1.webp" alt="Rear home extension with glazed sliding doors opening to garden" loading="lazy" decoding="async" />
+        </div>
+        <div class="service-info">
+          <div class="service-label-new">Extensions</div>
+          <p class="service-desc">Single-storey rear and side extensions that open up your ground floor and add real, liveable space to your home.</p>
+          <a href="services.html#extension" class="service-link-new">Explore service →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 5 — PORTFOLIO SLIDER
+══════════════════════════════════════════ -->
+<section class="section portfolio-teaser">
+  <div class="section-inner">
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+      <div>
+        <span class="eyebrow" style="color:var(--color-oak);">Selected Work</span>
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:500; color:var(--color-offwhite); letter-spacing:-0.03em; line-height:1.1; margin-top:12px;">
+          Every room, reimagined.
+        </h2>
+      </div>
+    </div>
+
+    <div class="portfolio-slider-wrap">
+      <div class="portfolio-slider" id="portfolioSlider">
+
+        <a href="portfolio.html" class="slider-card">
+          <img class="slider-card-img" src="images/web/attic-bathroom-marble.webp" alt="Attic en-suite — Adamstown, Dublin" loading="lazy" decoding="async" />
+          <div class="slider-card-overlay">
+            <div class="slider-card-cat">Attic Conversion</div>
+            <div class="slider-card-title">Adamstown,<br>Dublin</div>
+          </div>
+          <div class="slider-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-offwhite)"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="slider-card">
+          <img class="slider-card-img" src="images/web/kitchen-clondalkin-1.webp" alt="Kitchen renovation — Clondalkin, Dublin" loading="lazy" decoding="async" />
+          <div class="slider-card-overlay">
+            <div class="slider-card-cat">Kitchen Renovation</div>
+            <div class="slider-card-title">Clondalkin,<br>Dublin</div>
+          </div>
+          <div class="slider-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-offwhite)"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="slider-card">
+          <img class="slider-card-img" src="images/web/attic-adamstown2-1.webp" alt="Attic bedroom — Adamstown, Dublin" loading="lazy" decoding="async" />
+          <div class="slider-card-overlay">
+            <div class="slider-card-cat">Attic Conversion</div>
+            <div class="slider-card-title">Adamstown,<br>Dublin</div>
+          </div>
+          <div class="slider-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-offwhite)"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="slider-card">
+          <img class="slider-card-img" src="images/web/extension-dun-laoghaire-1.webp" alt="Home extension — Dún Laoghaire" loading="lazy" decoding="async" />
+          <div class="slider-card-overlay">
+            <div class="slider-card-cat">Home Extension</div>
+            <div class="slider-card-title">Dún Laoghaire,<br>Dublin</div>
+          </div>
+          <div class="slider-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-offwhite)"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="slider-card">
+          <img class="slider-card-img" src="images/web/attic-bedroom-clean.webp" alt="Attic room — Adamstown, Dublin" loading="lazy" decoding="async" />
+          <div class="slider-card-overlay">
+            <div class="slider-card-cat">Attic Conversion</div>
+            <div class="slider-card-title">Adamstown,<br>Dublin</div>
+          </div>
+          <div class="slider-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-offwhite)"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="slider-card">
+          <img class="slider-card-img" src="images/web/kitchen-shankill-1.webp" alt="Kitchen renovation — Shankill, Dublin" loading="lazy" decoding="async" />
+          <div class="slider-card-overlay">
+            <div class="slider-card-cat">Kitchen Renovation</div>
+            <div class="slider-card-title">Shankill,<br>Dublin</div>
+          </div>
+          <div class="slider-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-offwhite)"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="slider-card">
+          <img class="slider-card-img" src="images/web/attic-storage-shelving.webp" alt="Attic storage — Adamstown, Dublin" loading="lazy" decoding="async" />
+          <div class="slider-card-overlay">
+            <div class="slider-card-cat">Attic Conversion</div>
+            <div class="slider-card-title">Adamstown,<br>Dublin</div>
+          </div>
+          <div class="slider-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-offwhite)"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="slider-card">
+          <img class="slider-card-img" src="images/web/extension-dun-laoghaire-2.webp" alt="Home extension — Dún Laoghaire" loading="lazy" decoding="async" />
+          <div class="slider-card-overlay">
+            <div class="slider-card-cat">Home Extension</div>
+            <div class="slider-card-title">Dún Laoghaire,<br>Dublin</div>
+          </div>
+          <div class="slider-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-offwhite)"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </div>
+        </a>
+
+        <!-- CTA end card -->
+        <a href="portfolio.html" class="slider-cta-card">
+          <div class="slider-cta-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-oak)"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
+          </div>
+          <div class="slider-cta-label">View Full Portfolio</div>
+          <div class="slider-cta-sub">All projects →</div>
+        </a>
+
+      </div><!-- /.portfolio-slider -->
+    </div><!-- /.portfolio-slider-wrap -->
+
+    <div class="slider-footer">
+      <div class="slider-dots" id="sliderDots"></div>
+      <div class="slider-btns">
+        <button class="slider-btn" id="sliderPrev" aria-label="Previous">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+        </button>
+        <button class="slider-btn" id="sliderNext" aria-label="Next">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 6 — PROCESS
+══════════════════════════════════════════ -->
+<section class="section" style="background:var(--color-offwhite);">
+  <div class="section-inner">
+    <span class="eyebrow">How We Work</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:500; color:var(--color-charcoal); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; max-width:480px;">
+      Start to finish,<br>without the stress.
+    </h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-number">01</div>
+        <div class="process-title">Consultation</div>
+        <div class="process-desc">Virtual or on-site. We listen, assess the space, and understand what you want to achieve.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-number">02</div>
+        <div class="process-title">3D Design</div>
+        <div class="process-desc">We produce detailed 3D visuals so you can see exactly how your space will look before a single wall is touched.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-number">03</div>
+        <div class="process-title">Fixed Quote</div>
+        <div class="process-desc">One itemised quote covering every trade. No hidden costs, no additions — the number you sign is the number you pay.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-number">04</div>
+        <div class="process-title">The Build</div>
+        <div class="process-desc">Our own team handles all structural, electrical, plumbing, flooring, joinery, and painting works.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-number">05</div>
+        <div class="process-title">Handover</div>
+        <div class="process-desc">A snag-free, fully finished home. We don't leave until every detail meets the A&amp;B standard.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 7 — SMART-FLOW LEAD FORM
+══════════════════════════════════════════ -->
+<section class="section lead-form-section" id="lead-form">
+  <div class="section-inner" style="text-align:center;">
+    <span class="eyebrow" style="color:var(--color-oak);">Free Estimate</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:500; color:var(--color-offwhite); letter-spacing:-0.03em; line-height:1.1; margin-top:16px;">
+      Tell us about your project.
+    </h2>
+    <p style="font-family:'DM Sans',sans-serif; font-size:16px; color:rgba(247,244,240,0.6); margin-top:12px; max-width:480px; margin-left:auto; margin-right:auto;">
+      Takes under 2 minutes. We'll be back in touch via WhatsApp within 24 hours.
+    </p>
+  </div>
+
+  <div class="form-panel" id="leadFormPanel">
+    <div class="form-header">
+      <h3>Start Your Project</h3>
+      <p>Let us put together a free, no-obligation estimate for you.</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="form-progress" id="formProgress" aria-label="Form progress">
+      <div class="progress-dot active" id="dot1"></div>
+      <div class="progress-line"></div>
+      <div class="progress-dot" id="dot2"></div>
+      <div class="progress-line"></div>
+      <div class="progress-dot" id="dot3"></div>
+      <div class="progress-line"></div>
+      <div class="progress-dot" id="dot4"></div>
+      <div class="progress-line"></div>
+      <div class="progress-dot" id="dot5"></div>
+    </div>
+
+    <div class="form-body" id="formBody">
+      <!-- Step 1: Project type -->
+      <div class="form-step active" id="step1">
+        <div class="form-step-title">What are you looking to transform?</div>
+        <div class="project-cards">
+          <label class="project-card">
+            <input type="radio" name="projectType" value="attic" />
+            <div class="project-card-inner">
+              <img class="project-card-img" src="images/web/attic-bathroom-marble.webp" alt="Attic conversion" />
+              <div class="project-card-label">Attic Conversion</div>
+            </div>
+            <div class="project-card-check" aria-hidden="true"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" stroke-width="1.5" fill="none"/></svg></div>
+          </label>
+          <label class="project-card">
+            <input type="radio" name="projectType" value="kitchen" />
+            <div class="project-card-inner">
+              <img class="project-card-img" src="images/web/kitchen-clondalkin-1.webp" alt="Kitchen renovation" />
+              <div class="project-card-label">Kitchen Renovation</div>
+            </div>
+            <div class="project-card-check" aria-hidden="true"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" stroke-width="1.5" fill="none"/></svg></div>
+          </label>
+          <label class="project-card">
+            <input type="radio" name="projectType" value="extension" />
+            <div class="project-card-inner">
+              <img class="project-card-img" src="images/web/extension-dun-laoghaire-1.webp" alt="Home extension" />
+              <div class="project-card-label">Extension</div>
+            </div>
+            <div class="project-card-check" aria-hidden="true"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1" stroke-width="1.5" fill="none"/></svg></div>
+          </label>
+        </div>
+        <div class="form-nav" style="justify-content:flex-end;">
+          <button class="btn-primary" onclick="goStep(2)" style="font-size:13px; padding:12px 24px;">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Technical -->
+      <div class="form-step" id="step2">
+        <div class="form-step-title">A few technical details.</div>
+        <div class="form-field">
+          <label for="floorArea">Approximate floor area (m²)</label>
+          <input type="number" id="floorArea" name="floorArea" placeholder="e.g. 25" min="1" max="500" />
+        </div>
+        <div class="form-field">
+          <label for="planning">Planning permission status</label>
+          <select id="planning" name="planning">
+            <option value="" disabled selected>Select an option</option>
+            <option value="not-required">Not required (under 40m²)</option>
+            <option value="have-permission">Already have permission</option>
+            <option value="need-to-apply">Need to apply</option>
+            <option value="not-sure">Not sure</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="timeline">Preferred start timeline</label>
+          <select id="timeline" name="timeline">
+            <option value="" disabled selected>When are you looking to start?</option>
+            <option value="asap">As soon as possible</option>
+            <option value="1-3months">1–3 months</option>
+            <option value="3-6months">3–6 months</option>
+            <option value="6plus">6+ months (just exploring)</option>
+          </select>
+        </div>
+        <div class="form-nav">
+          <button class="form-back" onclick="goStep(1)">← Back</button>
+          <button class="btn-primary" onclick="goStep(3)" style="font-size:13px; padding:12px 24px;">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Aesthetic -->
+      <div class="form-step" id="step3">
+        <div class="form-step-title">What style speaks to you?</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:8px;">
+          <label style="cursor:pointer;">
+            <input type="checkbox" name="style" value="modern" style="position:absolute;opacity:0;width:0;height:0;" />
+            <div class="project-card-inner" style="border-radius:2px; overflow:hidden;">
+              <img src="images/web/kitchen-tallaght-1.webp" alt="Modern style" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;" />
+              <div class="project-card-label">Modern</div>
+            </div>
+          </label>
+          <label style="cursor:pointer;">
+            <input type="checkbox" name="style" value="shaker" style="position:absolute;opacity:0;width:0;height:0;" />
+            <div class="project-card-inner" style="border-radius:2px; overflow:hidden;">
+              <img src="images/web/kitchen-clondalkin-1.webp" alt="Shaker style" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;" />
+              <div class="project-card-label">Shaker / Classic</div>
+            </div>
+          </label>
+          <label style="cursor:pointer;">
+            <input type="checkbox" name="style" value="contemporary" style="position:absolute;opacity:0;width:0;height:0;" />
+            <div class="project-card-inner" style="border-radius:2px; overflow:hidden;">
+              <img src="images/web/attic-bathroom-marble.webp" alt="Contemporary style" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;" />
+              <div class="project-card-label">Contemporary</div>
+            </div>
+          </label>
+          <label style="cursor:pointer;">
+            <input type="checkbox" name="style" value="minimalist" style="position:absolute;opacity:0;width:0;height:0;" />
+            <div class="project-card-inner" style="border-radius:2px; overflow:hidden;">
+              <img src="images/web/kitchen-shankill-1.webp" alt="Minimalist style" style="width:100%;display:block;aspect-ratio:16/10;object-fit:cover;" />
+              <div class="project-card-label">Minimalist</div>
+            </div>
+          </label>
+        </div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:var(--color-text-muted);">Select all that apply</p>
+        <div class="form-nav">
+          <button class="form-back" onclick="goStep(2)">← Back</button>
+          <button class="btn-primary" onclick="goStep(4)" style="font-size:13px; padding:12px 24px;">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Step 4: 3D Design add-on -->
+      <div class="form-step" id="step4">
+        <div class="form-step-title">Would you like a 3D Design Package?</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:var(--color-text-muted);margin-bottom:24px;line-height:1.6;">
+          We create photorealistic visuals of your finished space before work begins. The €500 fee is waived if you proceed with the full build.
+        </p>
+        <div class="yesno-cards">
+          <label class="yesno-card" style="position:relative;">
+            <input type="radio" name="design3d" value="yes" />
+            <div class="yesno-inner">
+              <div class="yn-title">Yes, please</div>
+              <div class="yn-desc">I'd like to see it before committing</div>
+            </div>
+          </label>
+          <label class="yesno-card" style="position:relative;">
+            <input type="radio" name="design3d" value="no" />
+            <div class="yesno-inner">
+              <div class="yn-title">Not right now</div>
+              <div class="yn-desc">I'll go straight to a quote</div>
+            </div>
+          </label>
+        </div>
+        <div class="form-nav">
+          <button class="form-back" onclick="goStep(3)">← Back</button>
+          <button class="btn-primary" onclick="goStep(5)" style="font-size:13px; padding:12px 24px;">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Contact -->
+      <div class="form-step" id="step5">
+        <div class="form-step-title">Almost there — how do we reach you?</div>
+        <div class="form-field">
+          <label for="firstName">First name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Your first name" autocomplete="given-name" />
+        </div>
+        <div class="form-field" id="phoneField">
+          <label for="whatsapp">WhatsApp number</label>
+          <div class="phone-wrap">
+            <span class="phone-prefix">+353</span>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="85 123 4567" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="form-field" id="eircodeField">
+          <label for="eircode">Eircode <span style="font-weight:400;color:var(--color-text-muted);">(helps us assign the right team)</span></label>
+          <input type="text" id="eircode" name="eircode" placeholder="e.g. D01 AB23" maxlength="9" />
+          <div class="hint">Your 7-character Eircode</div>
+          <div class="error" role="alert">Please enter a valid Eircode (e.g. D01 AB23)</div>
+        </div>
+        <div class="form-nav">
+          <button class="form-back" onclick="goStep(4)">← Back</button>
+          <button class="btn-submit" onclick="submitForm()">Get My Free Estimate</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success state -->
+    <div class="form-success" id="formSuccess">
+      <svg class="success-tick" viewBox="0 0 56 56" aria-hidden="true">
+        <circle cx="28" cy="28" r="26"/>
+        <path d="M18 28 L24 34 L38 20"/>
+      </svg>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;color:var(--color-charcoal);letter-spacing:-0.02em;">Thank you.</h3>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:var(--color-text-muted);margin-top:12px;line-height:1.65;">We'll be in touch within 24 hours via WhatsApp. In the meantime, take a look at some of our recent work.</p>
+      <a href="portfolio.html" class="btn-primary" style="margin-top:24px;">View Our Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 8 — TESTIMONIALS
+══════════════════════════════════════════ -->
+<section class="section testimonials">
+  <div class="section-inner">
+    <span class="eyebrow">Client Stories</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,4vw,50px); font-weight:500; color:var(--color-charcoal); letter-spacing:-0.03em; line-height:1.1; margin-top:16px; max-width:460px;">
+      In their own words.
+    </h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 14 14"><path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4.5z"/></svg>
+          <svg viewBox="0 0 14 14"><path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4.5z"/></svg>
+          <svg viewBox="0 0 14 14"><path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4.5z"/></svg>
+          <svg viewBox="0 0 14 14"><path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4.5z"/></svg>
+          <svg viewBox="0 0 14 14"><path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4.5z"/></svg>
+        </div>
+        <div class="testimonial-quote">"We'd had two builders pull out halfway through. A&amp;B quoted us, started on the day they said they would, and handed over a fully finished attic room six weeks later. No stress. No extra invoices."</div>
+        <div class="testimonial-author">Sarah &amp; Tom K. — Ranelagh, Dublin 6</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 14 14"><path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4.5z"/></svg>
+          <svg viewBox="0 0 14 14"><path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4.5z"/></svg>
+          <svg viewBox="0 0 14 14"><path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4.5z"/></svg>
+          <svg viewBox="0 0 14 14"><path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4.5z"/></svg>
+          <svg viewBox="0 0 14 14"><path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4.5z"/></svg>
+        </div>
+        <div class="testimonial-quote">"The 3D design was worth every cent. We could actually see our new kitchen before the work started and made changes before it was too late. The finished result is exactly what we saw on screen."</div>
+        <div class="testimonial-author">Niamh O'B. — Clontarf, Dublin 3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="wordmark"><img src="images/web/logo-transparent.png" alt="A&B Home Perfection Renovations" style="height:48px;width:auto;margin-bottom:8px;" /></div>
+      <div class="tagline">"From First Sketch to Final Lick of Paint."</div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html#attic">Attic Conversions</a></li>
+        <li><a href="services.html#kitchen">Kitchen Renovations</a></li>
+        <li><a href="services.html#extension">Extensions</a></li>
+        <li><a href="services.html">All Services</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/353873930239">WhatsApp Us</a></li>
+        <li><a href="mailto:hello@abperfection.ie">hello@abperfection.ie</a></li>
+        <li><a href="https://www.instagram.com/homeperfectionrenovation">@homeperfectionrenovation</a></li>
+        <li><a href="about.html">About A&amp;B</a></li>
+        <li><a href="portfolio.html">Our Work</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 A&amp;B Home Perfection Renovations. 31 Ash Park Avenue, Lucan, Co. Dublin.</p>
+    <div class="footer-badge">Fixed-Price Guarantee</div>
+  </div>
+</footer>
+
+<script>
+  // ─── Nav scroll behaviour ───
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ─── Hamburger / Mobile Menu ───
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  // ─── Smart-Flow Form ───
+  let currentStep = 1;
+  const totalSteps = 5;
+
+  function updateDots(step) {
+    for (let i = 1; i <= totalSteps; i++) {
+      const dot = document.getElementById(`dot${i}`);
+      dot.classList.remove('active', 'done');
+      if (i < step) dot.classList.add('done');
+      else if (i === step) dot.classList.add('active');
+    }
+  }
+
+  function goStep(step) {
+    // Validate step 1
+    if (currentStep === 1 && step === 2) {
+      const selected = document.querySelector('input[name="projectType"]:checked');
+      if (!selected) { alert('Please select a project type to continue.'); return; }
+    }
+
+    document.getElementById(`step${currentStep}`).classList.remove('active');
+    currentStep = step;
+    document.getElementById(`step${currentStep}`).classList.add('active');
+    updateDots(currentStep);
+
+    // Focus management for accessibility
+    const title = document.querySelector(`#step${currentStep} .form-step-title`);
+    if (title) { title.setAttribute('tabindex', '-1'); title.focus(); }
+  }
+
+  function validateEircode(val) {
+    return /^[A-Z][0-9]{2}\s?[0-9A-Z]{4}$/i.test(val.trim());
+  }
+
+  document.getElementById('eircode').addEventListener('blur', function() {
+    const field = document.getElementById('eircodeField');
+    if (this.value && !validateEircode(this.value)) {
+      field.classList.add('has-error');
+    } else {
+      field.classList.remove('has-error');
+    }
+  });
+
+  function submitForm() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const eircode = document.getElementById('eircode').value.trim();
+
+    if (!firstName) { alert('Please enter your first name.'); return; }
+    if (eircode && !validateEircode(eircode)) {
+      document.getElementById('eircodeField').classList.add('has-error');
+      document.getElementById('eircode').focus();
+      return;
+    }
+
+    // Show success
+    document.getElementById('formBody').style.display = 'none';
+    document.getElementById('formProgress').style.display = 'none';
+    document.querySelector('.form-header').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('active');
+  }
+
+  // Style checkbox tiles — visual toggle on change
+  document.querySelectorAll('input[name="style"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const inner = cb.parentElement.querySelector('.project-card-inner');
+      if (inner) inner.style.borderColor = cb.checked ? 'var(--color-oak)' : 'var(--color-offwhite-3)';
+    });
+  });
+
+  // Smooth video loop — fade out near end, seek back to start, fade in
+  (function () {
+    const v = document.querySelector('.hero-video');
+    if (!v) return;
+    const FADE_DURATION = 1800; // ms — how long the crossfade takes
+    const FADE_START    = 2.0;  // seconds before end to begin fading out
+    let fading = false;
+
+    v.style.transition = 'opacity ' + FADE_DURATION + 'ms ease-in-out';
+
+    v.addEventListener('timeupdate', function () {
+      if (!v.duration || fading) return;
+      const remaining = v.duration - v.currentTime;
+      if (remaining <= FADE_START) {
+        fading = true;
+        v.style.opacity = '0';
+        setTimeout(function () {
+          v.currentTime = 0;
+          v.play();
+          v.style.opacity = '1';
+          // reset flag once fade-in completes
+          setTimeout(function () { fading = false; }, FADE_DURATION);
+        }, FADE_DURATION);
+      }
+    });
+  })();
+
+  // ─── Hero video: force-play & keep alive ───
+  (function () {
+    const v = document.querySelector('.hero-video');
+    if (!v) return;
+
+    function tryPlay() {
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {}); // silence AbortError
+    }
+
+    // Fire immediately (video may already be ready)
+    tryPlay();
+
+    // Also fire once metadata is loaded (catches slow networks)
+    v.addEventListener('loadedmetadata', tryPlay, { once: true });
+    v.addEventListener('canplay', tryPlay, { once: true });
+
+    // Resume whenever the tab comes back into focus
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && v.paused) tryPlay();
+    });
+
+    // Last resort: resume on first touch/click if still paused
+    function resumeOnInteraction() {
+      if (v.paused) tryPlay();
+      document.removeEventListener('click', resumeOnInteraction);
+      document.removeEventListener('touchstart', resumeOnInteraction);
+    }
+    document.addEventListener('click', resumeOnInteraction, { passive: true });
+    document.addEventListener('touchstart', resumeOnInteraction, { passive: true });
+  })();
+
+  // prefers-reduced-motion: disable video
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const v = document.querySelector('.hero-video');
+    if (v) { v.pause(); v.removeAttribute('autoplay'); }
+  }
+
+  // ─── Portfolio Slider ───
+  (function() {
+    const slider = document.getElementById('portfolioSlider');
+    const dotsWrap = document.getElementById('sliderDots');
+    const btnPrev = document.getElementById('sliderPrev');
+    const btnNext = document.getElementById('sliderNext');
+    if (!slider) return;
+
+    const cards = Array.from(slider.querySelectorAll('.slider-card'));
+    const cardCount = cards.length;
+
+    // Build dots
+    cards.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => scrollToCard(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    function scrollToCard(idx) {
+      const card = cards[idx];
+      if (!card) return;
+      slider.scrollTo({ left: card.offsetLeft - 0, behavior: 'smooth' });
+    }
+
+    function updateDots() {
+      const dots = dotsWrap.querySelectorAll('.slider-dot');
+      let closest = 0, minDist = Infinity;
+      cards.forEach((c, i) => {
+        const dist = Math.abs(c.offsetLeft - slider.scrollLeft);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+    }
+
+    slider.addEventListener('scroll', updateDots, { passive: true });
+
+    btnPrev.addEventListener('click', () => {
+      const dots = dotsWrap.querySelectorAll('.slider-dot');
+      let current = Array.from(dots).findIndex(d => d.classList.contains('active'));
+      scrollToCard(Math.max(0, current - 1));
+    });
+    btnNext.addEventListener('click', () => {
+      const dots = dotsWrap.querySelectorAll('.slider-dot');
+      let current = Array.from(dots).findIndex(d => d.classList.contains('active'));
+      scrollToCard(Math.min(cardCount - 1, current + 1));
+    });
+
+    // Drag-to-scroll on desktop
+    let isDown = false, startX, scrollLeft;
+    slider.addEventListener('mousedown', e => {
+      isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft;
+      slider.style.scrollSnapType = 'none';
+    });
+    slider.addEventListener('mouseleave', () => { isDown = false; slider.style.scrollSnapType = 'x mandatory'; });
+    slider.addEventListener('mouseup', () => { isDown = false; slider.style.scrollSnapType = 'x mandatory'; });
+    slider.addEventListener('mousemove', e => {
+      if (!isDown) return; e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      slider.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    });
+  })();
+</script>
+</body>
+</html>
